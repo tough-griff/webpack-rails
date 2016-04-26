@@ -1,0 +1,3 @@
+# WebpackRails
+
+This project rocks.
