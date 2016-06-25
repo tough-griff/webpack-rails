@@ -20,9 +20,11 @@ Gem::Specification.new do |s|
     "README.md",
   ]
 
-  s.add_dependency "rails", "~> 4.0"
   s.add_dependency "non-stupid-digest-assets", "~> 1.0"
+  s.add_dependency "rails", "~> 4.0"
 
+  s.add_development_dependency "awesome_print"
   s.add_development_dependency "bundler"
+  s.add_development_dependency "pry"
   s.add_development_dependency "rspec-rails"
 end
