@@ -6,7 +6,7 @@ module Webpack
       source_root File.expand_path("../templates", __FILE__)
 
       def create_initializer_file
-        template "webpack-rails.rb", "config/initializers/webpack-rails.rb"
+        template "webpack.rb", "config/initializers/webpack.rb"
       end
 
       def create_package_json
@@ -18,11 +18,15 @@ module Webpack
         empty_directory "frontend/js"
       end
 
-      def create_js_files
+      def create_js_config_files
         template "entries.json", "frontend/entries.json"
         template webpack_config("dev"), "frontend/#{webpack_config('dev')}"
         template webpack_config("prod"), "frontend/#{webpack_config('prod')}"
         template "webpackServer.js", "frontend/webpackServer.js"
+      end
+
+      def create_index_js
+        template "index.js", "frontend/js/index.js"
       end
 
       private

@@ -19,7 +19,8 @@ RSpec.describe Webpack::Rails::ViewHelpers, type: :helper do
 
     context "when simulating production" do
       before do
-        allow(ENV).to receive(:[]).with("SIMULATE_PROD").and_return(true)
+        allow(Rails).to receive_message_chain(:application, :config, :webpack, :simulate_production)
+          .and_return(true)
       end
 
       it { is_expected.to match(%r{<link rel="stylesheet" media="all" href=.* />}) }

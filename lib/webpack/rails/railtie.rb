@@ -7,9 +7,10 @@ module Webpack
       config.webpack = ActiveSupport::OrderedOptions.new
       # Sensible defaults
       config.webpack.host_name = "localhost"
-      config.webpack.node_port = 5050
-      config.webpack.suffix = "bundle"
       config.webpack.hot_loading_enabled = true
+      config.webpack.node_port = 5050
+      config.webpack.simulate_production = false
+      config.webpack.suffix = "bundle"
 
       # Configure (pre)compilation
       initializer "webpack_rails.configure_precompilation", group: :all do |app|
@@ -24,9 +25,12 @@ module Webpack
 
       # Configure Hot Loader
       initializer "webpack_rails.configure_hot_loader", group: :all do |app|
+        # TODO: configure simulation environment
         if app.config.webpack.hot_loading_enabled && ::Rails.env.development?
-          app.config.action_controller.asset_host = proc do |source|
-            "//#{app.config.webpack.host_name}:#{app.config.webpack.node_port}/assets" if source.ends_with?("#{app.config.webpack.suffix}.js")
+          if app.config.webpack.simulate_production
+            app.config.action_controller.asset_host = proc do |source|
+              "//#{app.config.webpack.host_name}:#{app.config.webpack.node_port}/assets" if source.ends_with?("#{app.config.webpack.suffix}.js")
+            end
           end
         end
       end

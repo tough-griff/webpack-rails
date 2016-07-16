@@ -16,8 +16,9 @@ module Webpack
 
       # Determine whether we are in production or simulating a production-like
       # environment.
+      # TODO: configure simulation environment
       def production?
-        ::Rails.env.production? || ENV["SIMULATE_PROD"]
+        ::Rails.env.production? || ::Rails.application.config.webpack.simulate_production
       end
     end
   end

@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "non-stupid-digest-assets", "~> 1.0"
   s.add_dependency "rails", "~> 4.0"
+  s.add_dependency "system-bang", "~> 1.0"
 
   s.add_development_dependency "awesome_print"
   s.add_development_dependency "bundler"
