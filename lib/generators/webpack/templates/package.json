@@ -1,0 +1,38 @@
+{
+  "name": "<%= Rails.application.class.to_s.split('::').first.underscore.gsub('_', '-') %>",
+  "version": "0.0.1",
+  "description": "TODO: description",
+  "repository": "TODO: repository",
+  "author": "TODO: author",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "NODE_ENV=production webpack --config=frontend/webpack.config.prod.babel.js",
+    "postbuild": "rimraf app/assets/javascripts/*.style.bundle.*",
+    "clean": "rimraf app/assets/{javascripts,stylesheets}",
+    "start": "npm run webpack-server",
+    "webpack-server": "babel-node frontend/webpackServer.js"
+  },
+  "dependencies": {
+    "babel-polyfill": "*",
+  },
+  "devDependencies": {
+    "babel-cli": "*",
+    "babel-loader": "*",
+    "babel-plugin-transform-runtime": "*",
+    "babel-preset-es2015": "*",
+    "babel-preset-stage-1": "*",
+    "babel-register": "*",
+    "cors": "*",
+    "css-loader": "*",
+    "express": "*",
+    "extract-text-webpack-plugin": "*",
+    "lodash": "*",
+    "node-sass": "*",
+    "rimraf": "*",
+    "sass-loader": "*",
+    "style-loader": "^0.1e3.1",
+    "webpack": "*",
+    "webpack-dev-middleware": "*",
+    "webpack-hot-middleware": "*"
+  }
+}
