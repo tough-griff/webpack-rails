@@ -6,11 +6,15 @@ module Webpack
     class Railtie < ::Rails::Railtie
       config.webpack = ActiveSupport::OrderedOptions.new
       # Sensible defaults
-      config.webpack.host_name = "localhost"
-      config.webpack.hot_loading_enabled = true
-      config.webpack.node_port = 5050
-      config.webpack.simulate_production = false
-      config.webpack.suffix = "bundle"
+      config.webpack.host_name           = host_name           = "localhost"
+      config.webpack.hot_loading_enabled = hot_loading_enabled = true
+      config.webpack.node_port           = node_port           = 5050
+      config.webpack.simulate_production = simulate_production = false
+      config.webpack.suffix              = suffix              = "bundle"
+
+      rake_tasks do
+        load File.expand_path("../../../tasks/build.rake", __FILE__)
+      end
 
       # Configure (pre)compilation
       initializer "webpack_rails.configure_precompilation", group: :all do |app|
@@ -25,12 +29,16 @@ module Webpack
 
       # Configure Hot Loader
       initializer "webpack_rails.configure_hot_loader", group: :all do |app|
-        # TODO: configure simulation environment
-        if app.config.webpack.hot_loading_enabled && ::Rails.env.development?
-          if app.config.webpack.simulate_production
+        if hot_loading_enabled && ::Rails.env.development?
+          if simulate_production
             app.config.action_controller.asset_host = proc do |source|
-              "//#{app.config.webpack.host_name}:#{app.config.webpack.node_port}/assets" if source.ends_with?("#{app.config.webpack.suffix}.js")
+              "//#{host_name}:#{node_port}/assets" if source.ends_with?("#{suffix}.js")
             end
+          else
+            # In a production-like environment, pull assets straight from public/assets.
+            config.assets.compile     = false
+            config.assets.debug       = false
+            config.serve_static_files = true
           end
         end
       end

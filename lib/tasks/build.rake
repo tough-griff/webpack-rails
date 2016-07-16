@@ -2,7 +2,7 @@ require "system-bang"
 
 namespace :webpack do
   desc "Compile javascripts assets"
-  task build: :environment do
+  task :build do
     abort("Rake must execute `build` in a production environment") unless Rails.env.production?
 
     system! "npm run build"
