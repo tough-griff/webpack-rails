@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Griffin Yourick"]
   s.email       = ["gryphon92@gmail.com"]
   s.homepage    = "https://github.com/tough-griff/webpack-rails"
-  s.summary     = "Summary of WebpackRails." # TODO
-  s.description = "Description of WebpackRails." # TODO
+  s.summary     = "Rails/webpack integration plugin."
+  s.description = "Easily implement webpack into your Rails project!"
   s.license     = "MIT"
 
   s.files = Dir[
