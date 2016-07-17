@@ -19,6 +19,7 @@ module Webpack
       end
 
       def create_js_config_files
+        template ".babelrc", "frontend/.babelrc"
         template "entries.json", "frontend/entries.json"
         template webpack_config("dev"), "frontend/#{webpack_config('dev')}"
         template webpack_config("prod"), "frontend/#{webpack_config('prod')}"
