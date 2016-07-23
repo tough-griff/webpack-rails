@@ -54,3 +54,13 @@ Rails.application.config.webpack.hot_loading_enabled = false
 ```
 then you can run `npm run build:dev` alongside your rails application to build
 assets into *app/assets/javascripts*.
+
+### Compiling assets
+To precompile your assets, run the included `rake` task as follows:
+```sh
+RAILS_ENV=production bundle exec rake webpack:build
+```
+
+### View Helpers
+`webpack_js_tag` and `webpack_style_tag` helpers are available in views to
+easily include webpack assets.

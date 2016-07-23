@@ -26,4 +26,16 @@ RSpec.describe Webpack::Rails::ViewHelpers, type: :helper do
       it { is_expected.to match(%r{<link rel="stylesheet" media="all" href=.* />}) }
     end
   end
+
+  describe "#webpack_js_tag" do
+    subject { webpack_js_tag("app") }
+
+    it { is_expected.to match(/app\.bundle/) }
+  end
+
+  describe "#webpack_style_tag" do
+    subject { webpack_style_tag("app") }
+
+    it { is_expected.to match(/app\.style\.bundle/) }
+  end
 end
