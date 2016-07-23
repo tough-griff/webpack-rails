@@ -7,9 +7,9 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "NODE_ENV=production webpack --config=frontend/webpack.config.prod.babel.js",
-    "postbuild": "rimraf app/assets/javascripts/*.style.bundle.*",
+    "postbuild": "rimraf app/assets/javascripts/*.style.<%= Rails.application.config.webpack.suffix %>.*",
     "build:dev": "NODE_ENV=development webpack --config=frontend/webpack.config.dev.babel.js",
-    "clean": "rimraf app/assets/{javascripts,stylesheets}",
+    "clean": "rimraf app/assets/{javascripts,stylesheets}/*.<%= Rails.application.config.webpack.suffix %>.*",
     "start": "npm run webpack-server",
     "webpack-server": "babel-node frontend/webpackServer.js"
   },

@@ -8,7 +8,7 @@ module Webpack
       # Sensible defaults
       config.webpack.host_name           = host_name           = "localhost"
       config.webpack.hot_loading_enabled = hot_loading_enabled = true
-      config.webpack.node_port           = node_port           = 5050
+      config.webpack.node_port           = node_port           = 4000
       config.webpack.simulate_production = simulate_production = false
       config.webpack.suffix              = suffix              = "bundle"
 

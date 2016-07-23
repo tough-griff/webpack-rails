@@ -13,12 +13,13 @@ module Webpack
         template "package.json", "package.json"
       end
 
-      def create_js_directory
+      def create_frontend_directory
         empty_directory "frontend"
+        empty_directory "frontend/css"
         empty_directory "frontend/js"
       end
 
-      def create_js_config_files
+      def create_frontend_config_files
         template ".babelrc", "frontend/.babelrc"
         template "entries.json", "frontend/entries.json"
         template webpack_config("dev"), "frontend/#{webpack_config('dev')}"
@@ -28,6 +29,10 @@ module Webpack
 
       def create_index_js
         template "index.js", "frontend/js/index.js"
+      end
+
+      def create_index_scss
+        template "index.scss", "frontend/css/index.scss"
       end
 
       private

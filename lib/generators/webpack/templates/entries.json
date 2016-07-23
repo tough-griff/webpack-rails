@@ -1,3 +1,4 @@
 {
   "app": ["babel-polyfill", "./js/index.js"],
+  "app.style": "./css/index.scss"
 }
