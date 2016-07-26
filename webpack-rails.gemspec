@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.version     = Webpack::Rails::VERSION
   s.authors     = ["Griffin Yourick"]
   s.email       = ["gryphon92@gmail.com"]
-  s.homepage    = "https://github.com/tough-griff/webpack-rails"
+  s.homepage    = "https://github.com/tough-griff/webpack-rails-rb"
   s.summary     = "Rails/webpack integration plugin."
   s.description = "Easily implement webpack into your Rails project!"
   s.license     = "MIT"
