@@ -13,7 +13,7 @@ module Webpack
       config.webpack.suffix              = "bundle"
 
       rake_tasks do
-        load File.expand_path("../../../tasks/build.rake", __FILE__)
+        load "tasks/build.rake"
       end
 
       # Configure (pre)compilation
@@ -32,16 +32,12 @@ module Webpack
         if app.config.webpack.hot_loading_enabled && ::Rails.env.development?
           if app.config.webpack.simulate_production
             # In a production-like environment, pull assets straight from public/assets.
-            config.assets.compile     = false
-            config.assets.debug       = false
-            config.serve_static_files = true
+            app.config.assets.compile     = false
+            app.config.assets.debug       = false
+            app.config.serve_static_files = true
           else
-            host_name = app.config.webpack.host_name
-            node_port = app.config.webpack.node_port
-            suffix    = app.config.webpack.suffix
-
             app.config.action_controller.asset_host = proc do |source|
-              "//#{host_name}:#{node_port}/assets" if source.ends_with?("#{suffix}.js")
+              "//#{app.config.webpack.host_name}:#{app.config.webpack.node_port}/assets" if source.ends_with?("#{app.config.webpack.suffix}.js")
             end
           end
         end

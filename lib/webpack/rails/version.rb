@@ -1,5 +1,5 @@
 module Webpack
   module Rails
-    VERSION = "0.0.1".freeze
+    VERSION = "1.0.0.rc1".freeze
   end
 end

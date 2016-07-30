@@ -5,6 +5,7 @@
   "repository": "TODO: repository",
   "author": "TODO: author",
   "license": "UNLICENSED",
+  "private": true,
   "scripts": {
     "build": "NODE_ENV=production webpack --config=frontend/webpack.config.prod.babel.js",
     "postbuild": "rimraf app/assets/javascripts/*.style.<%= Rails.application.config.webpack.suffix %>.*",
@@ -14,7 +15,7 @@
     "webpack-server": "babel-node frontend/webpackServer.js"
   },
   "dependencies": {
-    "babel-polyfill": "6.x",
+    "babel-polyfill": "6.x"
   },
   "devDependencies": {
     "babel-cli": "6.x",
